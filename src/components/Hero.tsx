@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
+import type { Dict } from "@/i18n/dictionaries";
 
-export default function Hero() {
+export default function Hero({ t }: { t: Dict }) {
   return (
     <section className="relative overflow-hidden pt-28 md:pt-36 pb-16 md:pb-24 bg-grid">
       <div className="mx-auto max-w-7xl px-5 md:px-8 grid md:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -9,37 +10,34 @@ export default function Hero() {
           <Reveal>
             <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/60 backdrop-blur px-3 py-1 text-xs text-ink/70">
               <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-              Pharma specialists · Latin America
+              {t.hero.pill}
             </span>
           </Reveal>
           <Reveal delay={80} as="h1" className="mt-5 text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[0.95]">
-            We build your <span className="gradient-text">dream team</span>.
+            {t.hero.titlePre}
+            <span className="gradient-text">{t.hero.titleGrad}</span>
+            {t.hero.titleEnd}
           </Reveal>
           <Reveal delay={160} as="p" className="mt-6 text-lg md:text-xl text-ink/70 max-w-xl">
-            We identify, select and attract specialized talent in the pharma industry — all across
-            Latin America and beyond.
+            {t.hero.subtitle}
           </Reveal>
           <Reveal delay={240} className="mt-8 flex flex-wrap items-center gap-3">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full bg-ink text-white px-6 py-3.5 text-sm font-medium hover:bg-brand transition"
             >
-              Get Started <span aria-hidden>→</span>
+              {t.hero.ctaPrimary} <span aria-hidden>→</span>
             </a>
             <a
               href="#how"
               className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3.5 text-sm font-medium hover:border-brand hover:text-brand transition"
             >
-              How we work
+              {t.hero.ctaSecondary}
             </a>
           </Reveal>
 
           <Reveal delay={320} className="mt-10 grid grid-cols-3 gap-6 max-w-md">
-            {[
-              { k: "24d", v: "avg. time-to-fill" },
-              { k: "6mo", v: "replacement guarantee" },
-              { k: "100%", v: "pharma specialized" },
-            ].map((s) => (
+            {t.hero.stats.map((s) => (
               <div key={s.k}>
                 <div className="text-2xl md:text-3xl font-semibold text-ink">{s.k}</div>
                 <div className="text-xs text-ink/60 mt-1">{s.v}</div>

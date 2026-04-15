@@ -1,6 +1,7 @@
 import Image from "next/image";
+import type { Dict } from "@/i18n/dictionaries";
 
-export default function Footer() {
+export default function Footer({ t }: { t: Dict }) {
   return (
     <footer className="bg-ink text-white">
       <div className="mx-auto max-w-7xl px-5 md:px-8 py-16 grid gap-10 md:grid-cols-[1fr_auto] items-start">
@@ -14,15 +15,13 @@ export default function Footer() {
           />
           <div>
             <p className="text-xl font-semibold">Hubi Group</p>
-            <p className="mt-1 text-white/60 max-w-md text-sm">
-              We build your dream team — specialized pharma recruiting across Latin America.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-x-8 gap-y-2 text-sm">
-              <a href="mailto:community@hubigroup.com" className="hover:text-accent">
+            <p className="mt-1 text-white/60 max-w-md text-sm">{t.footer.tagline}</p>
+            <div className="mt-5">
+              <a
+                href="mailto:community@hubigroup.com"
+                className="text-sm text-white/90 hover:text-accent underline-offset-4 hover:underline"
+              >
                 community@hubigroup.com
-              </a>
-              <a href="tel:+570000000000" className="text-white/70 hover:text-white">
-                +57 000 000 0000
               </a>
             </div>
           </div>
@@ -33,19 +32,19 @@ export default function Footer() {
             href="#contact"
             className="inline-flex items-center gap-2 rounded-full bg-brand hover:bg-brand-dark px-5 py-2.5 text-sm font-medium transition"
           >
-            Get Started FREE →
+            {t.footer.cta}
           </a>
           <nav className="flex flex-wrap gap-5 text-sm text-white/60">
-            <a href="#services" className="hover:text-white">Services</a>
-            <a href="#how" className="hover:text-white">How we work</a>
-            <a href="#faq" className="hover:text-white">FAQ</a>
+            <a href="#services" className="hover:text-white">{t.footer.nav.services}</a>
+            <a href="#how" className="hover:text-white">{t.footer.nav.how}</a>
+            <a href="#faq" className="hover:text-white">{t.footer.nav.faq}</a>
           </nav>
         </div>
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto max-w-7xl px-5 md:px-8 py-6 text-xs text-white/50 flex flex-wrap justify-between gap-3">
-          <p>© {new Date().getFullYear()} Hubi Group — All rights reserved.</p>
-          <p>Designed and engineered with care.</p>
+          <p>© {new Date().getFullYear()} Hubi Group — {t.footer.rights}</p>
+          <p>{t.footer.credit}</p>
         </div>
       </div>
     </footer>

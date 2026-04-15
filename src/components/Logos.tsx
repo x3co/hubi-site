@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Reveal from "./Reveal";
+import type { Dict } from "@/i18n/dictionaries";
 
 const LOGOS = [
   "logo-canterbury_1logo-canterbury.png",
@@ -10,13 +11,13 @@ const LOGOS = [
   "logo-park_1logo-park.png",
 ];
 
-export default function Logos() {
+export default function Logos({ t }: { t: Dict }) {
   const row = [...LOGOS, ...LOGOS];
   return (
     <section className="py-16 border-y border-black/5 bg-white">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal as="p" className="text-center text-sm uppercase tracking-[0.2em] text-ink/50">
-          Trusted by teams increasing their hiring success
+          {t.logos.label}
         </Reveal>
         <div className="mt-10 overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
           <div className="flex gap-16 marquee-track w-max">
